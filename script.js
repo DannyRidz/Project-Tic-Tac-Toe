@@ -96,3 +96,49 @@ const gameController = (function () {
 
     return { playRound, getActivePlayer, resetGame };
 })();
+
+const displayController = (function () {
+    const boardContainer = document.getElementById('gameboard-container');
+    const statusDisplay = document.getElementById('status-display');
+    const resetButton = document.getElementById('reset-btn');
+
+    const renderBoard = () => {
+        boardContainer.innerHTML = "";
+        const currentBoard = gameBoard.getBoard();
+
+        currentBoard.forEach((marker, index) => {
+            const square = document.createElement('div');
+            square.classList.add('square');
+            square.textContent = marker;
+
+            square.dataset.index = index;
+
+            square.addEventListener('click', handleSquareClick);
+
+            boardContainer.appendChild(square);
+        });
+    };
+
+    const handleSquareClick = (e) => {
+        const clickedIndex = e.target.dataset.index;
+
+        gameController.playRound(clickedIndex);
+
+        renderBoard();
+        updateStatus();
+    };
+
+    const updateStatus = () => {
+        statusDisplay.textContent = `${gameController.getActivePlayer().name}'s Turn`;
+    };
+
+    resetButton.addEventListener('click', () => {
+        gameController.resetGame();
+        renderBoard();
+        updateStatus();
+    });
+
+    renderBoard();
+
+    return { renderBoard };
+})();
