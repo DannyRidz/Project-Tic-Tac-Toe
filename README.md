@@ -12,12 +12,12 @@ Instead of mixing all the game logic, variables, and screen updates together, th
 * **The Referee Layer (`gameController`):** The central brain of the game. It controls game flow, switches player turns, checks for a draw, and calculates win conditions.
 * **The Interface Layer (`displayController`):** Handles everything you see on the screen. It renders the HTML grid dynamically from the gameboard data, listens for mouse clicks, and updates the turn header.
 
-## 🔧 Technologies Used
+## Technologies Used
 * **HTML5:** Formats the layout page and control containers.
 * **CSS3:** Uses **CSS Grid** to arrange the 9 clickable squares into a perfect 3x3 layout.
 * **Modern JavaScript (ES6+):** Utilizes **Closures** and **Immediately Invoked Function Expressions (IIFEs)** to keep variables safe and prevent them from leaking into the global scope.
 
-## 🧠 What I Learned From This Project
+## What I Learned From This Project
 * **Data Privacy:** How to lock variables inside a function so the outside world cannot accidentally alter or ruin the data.
 * **Separation of Concerns:** Writing a logical game engine that works completely independently of the HTML interface.
 * **Advanced Scope:** Fully grasping the concept of Closures and mastering the syntax of IIFEs to create Singletons (objects where only one copy is ever needed).
